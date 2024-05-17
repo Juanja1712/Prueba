@@ -55,10 +55,10 @@ export class StudentsService {
     return findId;
   }
 
-  async findOneByEmail(email: string): Promise<Students> {
-    const admin = await this.studentModel.findOne({ email }).exec();
+  async findOneByDocument(document: string): Promise<Students> {
+    const admin = await this.studentModel.findOne({ document }).exec();
     if (!admin) {
-      throw new NotFoundException(`user with email address ${email} not found`);
+      throw new NotFoundException(`user with document address ${document} not found`);
     }
     return admin;
   }

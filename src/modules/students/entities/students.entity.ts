@@ -27,9 +27,9 @@ export class Students extends Document {
   @Prop({ required: true })
   lastname: string;
 
-  @IsNumber()
+  @IsString()
   @Prop({ required: true, unique: true })
-  document: number;
+  document: string;
 
   @IsEmail()
   @Transform(({ value }) => value.toLowerCase())
@@ -49,9 +49,9 @@ export class Students extends Document {
   @Prop({ required: true })
   phone: number;
 
-  // @IsOptional()
-  // @Prop()
-  // dateBirth: Date;
+  @IsOptional()
+  @Prop()
+  dateBirth: Date;
 
   @Prop({ required: true })
   clan: string;

@@ -26,9 +26,9 @@ export class Teachers extends Document {
   @Prop({ required: true })
   lastname: string;
 
-  @IsNumber()
+  @IsString()
   @Prop({ required: true, unique: true })
-  document: number;
+  document: string;
 
   @IsEmail()
   //@Transform(({value} => value.toLowerCase()))

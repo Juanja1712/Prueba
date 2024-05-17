@@ -40,13 +40,13 @@ export class RegisterStudentsDto {
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
-  document: number;
+  @IsString()
+  document: string;
 
-  // @ApiProperty()
-  // @IsOptional()
-  // @IsDate()
-  // dateBirth: Date;
+  @ApiProperty()
+  @IsOptional()
+  @IsDate()
+  dateBirth: Date;
 
   @ApiProperty()
   @IsString()

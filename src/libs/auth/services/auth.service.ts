@@ -26,8 +26,8 @@ export class AuthService {
   }
 
   async login(loginDto: UserLoginDto): Promise<Tokens> {
-    const { email, password } = loginDto;
-    const user = await this.studentsService.findOneByEmail(email);
+    const { document, password } = loginDto;
+    const user = await this.studentsService.findOneByDocument(document);
 
     if (!user || !(await this.hash.compare(password, user.password))) {
       throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
@@ -42,8 +42,16 @@ export class AuthService {
     const hashedPassword = await this.hash.hash(SignUpDto.password);
 
     const user = await this.studentsService.create({
-      ...SignUpDto,
+      _id: '',
+      email: SignUpDto.email,
       password: hashedPassword,
+      name: SignUpDto.name,
+      lastname: SignUpDto.lastname,
+      phone: SignUpDto.phone,
+      document: SignUpDto.document,
+      clan: SignUpDto.clan,
+      role: SignUpDto.role,
+      dateBirth: SignUpDto.dateBirth
     });
 
     await user.save();

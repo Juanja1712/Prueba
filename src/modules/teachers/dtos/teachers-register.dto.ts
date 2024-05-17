@@ -29,8 +29,8 @@ export class RegisterTeachersDto {
 
   @ApiProperty()
   @IsOptional()
-  @IsNumber()
-  document: number;
+  @IsString()
+  document: string;
 
   @ApiProperty()
   @IsOptional()
